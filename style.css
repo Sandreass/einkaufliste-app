@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Charm:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+a {
+  text-decoration: none;
+  list-style: none;
+}
+
+body {
+  font-family: "Charm", sans-serif;
+  background-color: linear-gradient(to bottom right, rgb(80, 142, 212   ), rgb(5, 70, 168));
+  min-height: 100vh;
+  color: white;
+}
