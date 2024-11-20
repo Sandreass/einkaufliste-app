@@ -3,12 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css"
+      integrity="sha512-9xKTRVabjVeZmc+GUW8GgSmcREDunMM+Dt/GrzchfN8tkwHizc5RP4Ok/MXFFy5rIjJjzhndFScTceq5e6GvVQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="style.css" />
     <script src="main.js" defer></script>
+
     <title>Document</title>
   </head>
-  <header>
-    <h1>Einkaufliste</h1>
-  </header>
-  <body></body>
+
+  <body>
+    <header>
+      <h1>Deine Einkaufliste</h1>
+    </header>
+    <main>
+      <ul class="lists_container">
+        <li class="list_card">
+          <p>
+            <strong>10 Banana</strong>
+          </p>
+          <div class="btn_container">
+            <span><i class="fa-regular fa-pen-to-square"></i></span>
+            <span><i class="fa-regular fa-trash-can"></i></span>
+          </div>
+        </li>
+        <li class="list_card">
+          <p>
+            <strong>5 Kiwis</strong>
+          </p>
+          <div class="btn_container">
+            <span><i class="fa-regular fa-pen-to-square"></i></span>
+            <span><i class="fa-regular fa-trash-can"></i></span>
+          </div>
+        </li>
+      </ul>
+    </main>
+  </body>
 </html>

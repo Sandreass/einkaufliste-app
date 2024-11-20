@@ -14,7 +14,44 @@ a {
 
 body {
   font-family: "Charm", sans-serif;
-  background-color: linear-gradient(to bottom right, rgb(80, 142, 212   ), rgb(5, 70, 168));
+
+  background: linear-gradient(
+    to bottom right,
+    rgb(80, 142, 212),
+    rgb(5, 70, 168)
+  );
   min-height: 100vh;
   color: white;
+  padding: 0 5rem;
 }
+header{
+  padding: 2rem 0;
+}
+
+.lists_container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.list_card{
+  width: 20rem;
+  background-color: white;
+  border-radius: 7px;
+  color: black;
+  position: relative;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.btn_container{
+position: absolute;
+top: 3px;
+right: 10px;
+}
+
+.list_card > p {
+  font-size: 24px;
+}
+
