@@ -1,5 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Charm:wght@400;700&display=swap");
 
+:root {
+  --primary-color: rgb(255, 255, 255);
+  --secondary-color: rgb(27, 27, 27);
+  --third-color: rgb(5, 70, 168);
+  --third-color-accent: rgb(80, 142, 212);
+  --min-height: 100vh;
+  font-size-xxl: 40px;
+  font-size-l: 24px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -12,62 +22,75 @@ a {
   list-style: none;
 }
 
+body,
+header,
+main,
+footer {
+  width: 100%;
+}
+
 body {
   font-family: "Charm", sans-serif;
 
   background: linear-gradient(
     to bottom right,
-    rgb(80, 142, 212),
-    rgb(5, 70, 168)
+    var(--third-color-accent),
+    var(--third-color)
   );
-  
-  color: white;
+  color: var(--primary-color);
   padding: 0 5rem;
-  min-height: 100vh;
+  min-height: var(--min-height);
 }
-header{
+header {
   padding: 2rem 0;
 }
 
-.lists_container{
+header > h1 {
+  font-size: var(--font-size-xxl);
+}
+
+.lists_container {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
 }
 
-.list_card{
+.list_card {
   width: 20rem;
-  background-color: white;
+  background-color: var(--primary-color);
   border-radius: 7px;
-  color: black;
+  color: var(--secondary-color);
   position: relative;
   text-align: center;
   padding: 1rem 0;
 }
 
-.btn_container{
-position: absolute;
-top: 3px;
-right: 10px;
+.btn_container {
+  position: absolute;
+  top: 3px;
+  right: 10px;
 }
 
 .list_card > p {
-  font-size: 24px;
+  font-size: var(--font-size-l);
 }
 
-.add_list_btn{
- padding: 0.5rem 1rem;
+.add_list_btn {
+  padding: 0.5rem 1rem;
   background-color: transparent;
-  color: white;
-  border: 4px solid white;
+  color: var(--primary-color);
+  border: 4px solid var(--primary-color);
   border-radius: 7px;
   cursor: pointer;
   font-size: 35px;
-  font-weight: bold; 
+  font-weight: bold;
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-
+  transition: transform 0.3s;
 }
 
+.add_list_btn:hover {
+  transform: scale(1.1);
+}
