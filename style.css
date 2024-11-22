@@ -1,3 +1,4 @@
+
 @import url("https://fonts.googleapis.com/css2?family=Charm:wght@400;700&display=swap");
 
 :root {
@@ -5,9 +6,11 @@
   --secondary-color: rgb(27, 27, 27);
   --third-color: rgb(5, 70, 168);
   --third-color-accent: rgb(80, 142, 212);
+
   --min-height: 100vh;
-  font-size-xxl: 40px;
-  font-size-l: 24px;
+
+  --font-size-xxl: 40px;
+  --font-size-l: 24px;
 }
 
 * {
@@ -31,21 +34,19 @@ footer {
 
 body {
   font-family: "Charm", sans-serif;
-
-  background: linear-gradient(
-    to bottom right,
-    var(--third-color-accent),
-    var(--third-color)
-  );
+  background: linear-gradient(to bottom right,
+      var(--third-color-accent),
+      var(--third-color));
+  min-height: var(--min-height);
   color: var(--primary-color);
   padding: 0 5rem;
-  min-height: var(--min-height);
 }
+
 header {
   padding: 2rem 0;
 }
 
-header > h1 {
+header>h1 {
   font-size: var(--font-size-xxl);
 }
 
@@ -72,46 +73,49 @@ header > h1 {
   right: 10px;
 }
 
-.list_card > p {
+.list_card>p {
   font-size: var(--font-size-l);
 }
 
 .add_list_btn {
-  padding: 0.5rem 1rem;
-  background-color: transparent;
+  padding: 0 .5rem;
+  background: transparent;
   color: var(--primary-color);
   border: 4px solid var(--primary-color);
   border-radius: 7px;
-  cursor: pointer;
   font-size: 35px;
-  font-weight: bold;
+  font-weight: 600;
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  transition: transform 0.3s;
+  cursor: pointer;
+  transition: transform 0.3s ease-out;
 }
 
 .add_list_btn:hover {
   transform: scale(1.1);
 }
-.backroup {
-  width: 100%;
-  min-height: 100vh;
-  background-color: rgba(0, 0, 0, 0.73);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: grid;
-  justify-content: center;
-  align-items: center;
+
+main dialog {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 21rem;
+  text-align: center;
+  padding: 1.5rem 3.5rem;
+  border-radius: 12px;
+  background: rgb(253, 252, 252);
+  border: none;
 }
 
-.backroup > dialog {
-  text-align: center;
-  padding: 2rem 4rem;
-  border-radius: 12px;
-  place-self: center;
+dialog::backdrop{
+  background-color: rgba(0, 0, 0, 0.729);
+}
+
+dialog h4 {
+  margin-bottom: 1rem;
+  font-size: 20px;
+  color: rgb(86, 85, 85);
 }
 
 dialog form {
@@ -119,15 +123,15 @@ dialog form {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.3rem;
 }
 
 form input,
 form button {
-  border: 1px solid var(--third-color-accent);
+  border: 1px solid rgb(166, 164, 164);
   border-radius: 333px;
   width: 100%;
-  padding: 0.3rem 0.8rem;
+  padding: 0.4rem 0.8rem;
   outline: none;
 }
 
@@ -135,10 +139,23 @@ form button {
   background-color: var(--third-color-accent);
   color: var(--primary-color);
   cursor: pointer;
+  margin-top: 0.3rem;
 }
 
-.close_dialog {
-  position: absolute;
-  top: 5px;
-  right: 10px;
+form button:hover {
+  background-color: rgba(80, 141, 212, 0.825);
+}
+
+input::placeholder {
+  font-weight: 700;
+  font-size: 12px;
+  color: rgb(136, 136, 136);
+}
+
+.close_dialog{
+position: absolute;
+top: 5px;
+right: 10px;
+font-weight: bold;
+font-size: 21px;
 }
