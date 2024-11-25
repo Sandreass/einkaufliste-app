@@ -135,6 +135,16 @@ form button {
   padding: 0.4rem 0.8rem;
   outline: none;
 }
+.form_group input:invalid,
+.form_group input:focus
+{
+  border: none;
+  outline: 1px solid red;
+}
+
+.form_group input:valid{
+  outline: 1px solid rgb(31, 248, 45);
+}
 
 form button {
   background-color: var(--third-color-accent);

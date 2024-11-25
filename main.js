@@ -21,8 +21,14 @@ inputPreis.addEventListener('input',(e)=>{
         msgElem.style.padding = '0.4rem 0';
         
         e.target.parentElement.appendChild(msgElem); 
-    }
-})
+    }else if (inputPriceValue === '') {
+        msgElem = document.createElement('p');
+        msgElem.classList.add('msg');
+        msgElem.textContent = 'Dieses Feld darf nicht leer sein!';
+        e.target.parentElement.appendChild(msgElem);
+}
+
+});
 
 addBtn.addEventListener("click", () => {
   dialogElem.showModal();
@@ -40,10 +46,6 @@ window.addEventListener("click", (event) => {
 
 formElem.addEventListener("submit", (event) => {
   event.preventDefault();
-
-  /*const name = document.getElementById("name").value;
-  const menge = document.getElementById("menge").value;
-  const preis = document.getElementById("preis").value;*/
 
   const { name, menge, preis } = event.target.elements;
 
