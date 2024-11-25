@@ -3,31 +3,30 @@ const addBtn = document.querySelector(".add_list_btn");
 const closeBtn = document.querySelector(".close_dialog");
 const formElem = document.querySelector("form");
 
-const inputPreis = document.querySelector('input[name="preis"]')
-inputPreis.addEventListener('input',(e)=>{
-    const inputPriceValue = e.target.value;
-    let msgElem = e.target.nextElementSibling;
+const inputPreis = document.querySelector('input[name="preis"]');
+inputPreis.addEventListener("input", (e) => {
+  const inputPriceValue = e.target.value;
+  let msgElem = e.target.nextElementSibling;
 
-    if (msgElem) {
-        msgElem.remove()
-    }
+  if (msgElem) {
+    msgElem.remove();
+  }
 
-    if (isNaN(inputPriceValue) || inputPriceValue < 1) {
-        msgElem = document.createElement('p');
-        msgElem.classList.add('msg');
-        msgElem.textContent = 'Preis muss größer als 1 sein!';
-        msgElem.style.color = 'red'; 
-        msgElem.style.fontSize = '0.9rem';
-        msgElem.style.padding = '0.4rem 0';
-        
-        e.target.parentElement.appendChild(msgElem); 
-    }else if (inputPriceValue === '') {
-        msgElem = document.createElement('p');
-        msgElem.classList.add('msg');
-        msgElem.textContent = 'Dieses Feld darf nicht leer sein!';
-        e.target.parentElement.appendChild(msgElem);
-}
+  if (isNaN(inputPriceValue) || inputPriceValue < 1) {
+    msgElem = document.createElement("p");
+    msgElem.classList.add("msg");
+    msgElem.textContent = "Preis muss größer als 1 sein!";
+    msgElem.style.color = "red";
+    msgElem.style.fontSize = "0.9rem";
+    msgElem.style.padding = "0.4rem 0";
 
+    e.target.parentElement.appendChild(msgElem);
+  } else if (inputPriceValue === "") {
+    msgElem = document.createElement("p");
+    msgElem.classList.add("msg");
+    msgElem.textContent = "Dieses Feld darf nicht leer sein!";
+    e.target.parentElement.appendChild(msgElem);
+  }
 });
 
 addBtn.addEventListener("click", () => {
@@ -49,19 +48,28 @@ formElem.addEventListener("submit", (event) => {
 
   const { name, menge, preis } = event.target.elements;
 
+  const nameValue = name.value.trim();
+  const formattedName =
+    nameValue.charAt(0).toUpperCase() + nameValue.slice(1).toLowerCase();
+
+  const mengeValue = menge.value.trim();
+  const preisValue = preis.value.trim();
+
   const exitingdata = getDataFromLocaleStorage();
 
   const newData = {
-    name: name.value,
-    menge: menge.value,
-    preis: preis.value,
+    name: formattedName,
+    menge: mengeValue,
+    preis: preisValue,
   };
-
-  console.log(newData.preis);
 
   const updatedData = [...exitingdata, newData];
 
   saveToLocaleStorage(updatedData);
+
+  name.value = "";
+  menge.value = "";
+  preis.value = "";
 });
 
 const saveToLocaleStorage = (dataObj) => {
