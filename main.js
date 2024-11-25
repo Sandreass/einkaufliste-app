@@ -1,8 +1,28 @@
 const dialogElem = document.querySelector(".dialog_elem");
 const addBtn = document.querySelector(".add_list_btn");
 const closeBtn = document.querySelector(".close_dialog");
-
 const formElem = document.querySelector("form");
+
+const inputPreis = document.querySelector('input[name="preis"]')
+inputPreis.addEventListener('input',(e)=>{
+    const inputPriceValue = e.target.value;
+    let msgElem = e.target.nextElementSibling;
+
+    if (msgElem) {
+        msgElem.remove()
+    }
+
+    if (isNaN(inputPriceValue) || inputPriceValue < 1) {
+        msgElem = document.createElement('p');
+        msgElem.classList.add('msg');
+        msgElem.textContent = 'Preis muss größer als 1 sein!';
+        msgElem.style.color = 'red'; 
+        msgElem.style.fontSize = '0.9rem';
+        msgElem.style.padding = '0.4rem 0';
+        
+        e.target.parentElement.appendChild(msgElem); 
+    }
+})
 
 addBtn.addEventListener("click", () => {
   dialogElem.showModal();
@@ -34,6 +54,8 @@ formElem.addEventListener("submit", (event) => {
     menge: menge.value,
     preis: preis.value,
   };
+
+  console.log(newData.preis);
 
   const updatedData = [...exitingdata, newData];
 

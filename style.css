@@ -1,5 +1,6 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Charm:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Sofadi+One&display=swap');
 
 :root {
   --primary-color: rgb(255, 255, 255);
@@ -33,7 +34,7 @@ footer {
 }
 
 body {
-  font-family: "Charm", sans-serif;
+  font-family: "Sofadi One", system-ui;
   background: linear-gradient(to bottom right,
       var(--third-color-accent),
       var(--third-color));
@@ -118,7 +119,7 @@ dialog h4 {
   color: rgb(86, 85, 85);
 }
 
-dialog form {
+dialog .form_group {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -126,7 +127,7 @@ dialog form {
   gap: 0.3rem;
 }
 
-form input,
+.form_group input,
 form button {
   border: 1px solid rgb(166, 164, 164);
   border-radius: 333px;
@@ -158,4 +159,17 @@ top: 5px;
 right: 10px;
 font-weight: bold;
 font-size: 21px;
+}
+
+/* Entfernt die Spinner-Pfeile bei Chrome, Edge und Safari */
+.no-spinner::-webkit-outer-spin-button,
+.no-spinner::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+/* Entfernt die Spinner-Pfeile bei Firefox */
+.no-spinner[type="number"] {
+  -moz-appearance: textfield;
 }
