@@ -3,6 +3,10 @@ const addBtn = document.querySelector(".add_list_btn");
 const closeBtn = document.querySelector(".close_dialog");
 const formElem = document.querySelector("form");
 
+document.addEventListener("DOMContentLoaded", () => {
+  renderProducts();
+});
+
 const inputPreis = document.querySelector('input[name="preis"]');
 inputPreis.addEventListener("input", (e) => {
   const inputPriceValue = e.target.value;
@@ -70,6 +74,8 @@ formElem.addEventListener("submit", (event) => {
   name.value = "";
   menge.value = "";
   preis.value = "";
+
+  renderProducts();
 });
 
 const saveToLocaleStorage = (dataObj) => {
@@ -80,3 +86,24 @@ const getDataFromLocaleStorage = () => {
   const data = localStorage.getItem("Products");
   return data ? JSON.parse(data) : [];
 };
+
+const renderProducts = () => {
+  const products = getDataFromLocaleStorage();
+
+  const rootElem = document.querySelector(".root");
+
+  rootElem.innerHTML = `<ul class="lists_container">
+  ${products
+    .map(
+      (product) => `
+    <li class="list_card">
+    <p><strong>${product.name} ${product.menge}</strong></p>
+    <div class = "btn_container">
+    <span><i class="fa-regular fan-pen-to-square"></i></span>
+    <span><i class="fa-regular fan-trash-can"></i></span>
+    `).join("")}
+    </ul>
+`;
+};
+
+renderProducts();

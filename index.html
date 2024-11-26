@@ -21,26 +21,9 @@
       <h1>Deine Einkaufliste</h1>
     </header>
     <main>
-      <ul class="lists_container">
-        <li class="list_card">
-          <p>
-            <strong>10 Banana</strong>
-          </p>
-          <div class="btn_container">
-            <span><i class="fa-regular fa-pen-to-square"></i></span>
-            <span><i class="fa-regular fa-trash-can"></i></span>
-          </div>
-        </li>
-        <li class="list_card">
-          <p>
-            <strong>5 Kiwis</strong>
-          </p>
-          <div class="btn_container">
-            <span><i class="fa-regular fa-pen-to-square"></i></span>
-            <span><i class="fa-regular fa-trash-can"></i></span>
-          </div>
-        </li>
-      </ul>
+      <div class="root">
+        
+      </div>
       <button class="add_list_btn">+</button>
 
       <dialog class="dialog_elem">
@@ -49,13 +32,35 @@
         <form>
           <div class="form_group">
             <label for="name"></label>
-            <input type="text" name="name" id="name" placeholder="name" required/>
-  
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="name"
+              required
+            />
+
             <label for="menge"></label>
-            <input type="number" name="menge" id="menge" placeholder="menge" min="1" class="no-spinner" required/>
-  
+            <input
+              type="number"
+              name="menge"
+              id="menge"
+              placeholder="menge"
+              min="1"
+              class="no-spinner"
+              required
+            />
+
             <label for="preis"></label>
-            <input type="number" name="preis" id="preis" placeholder="preis" min="0" class="no-spinner" step="0.1" required/>
+            <input
+              type="number"
+              name="preis"
+              id="preis"
+              placeholder="preis"
+              class="no-spinner"
+              step="0.01"
+              required
+            />
           </div>
 
           <button type="submit">OK</button>
