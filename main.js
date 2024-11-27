@@ -65,6 +65,7 @@ formElem.addEventListener("submit", (event) => {
     name: formattedName,
     menge: mengeValue,
     preis: preisValue,
+    id:new Date().getTime()
   };
 
   const updatedData = [...exitingdata, newData];
@@ -92,18 +93,18 @@ const renderProducts = () => {
 
   const rootElem = document.querySelector(".root");
 
-  rootElem.innerHTML = `<ul class="lists_container">
-  ${products
-    .map(
-      (product) => `
+  rootElem.innerHTML = `
+  <ul class="lists_container">
+  ${products.map(product => `
     <li class="list_card">
     <p><strong>${product.name} ${product.menge}</strong></p>
     <div class = "btn_container">
-    <span><i class="fa-regular fan-pen-to-square"></i></span>
-    <span><i class="fa-regular fan-trash-can"></i></span>
+    <span><i class="fa-regular fa-pen-to-square"></i></span>
+    <span><i class="fa-regular fa-trash-can"></i></span>
+    </div>
+    </li>
     `).join("")}
     </ul>
-`;
-};
+`
+}
 
-renderProducts();
