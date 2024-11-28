@@ -2,12 +2,15 @@ const dialogElem = document.querySelector(".dialog_elem");
 const addBtn = document.querySelector(".add_list_btn");
 const closeBtn = document.querySelector(".close_dialog");
 const formElem = document.querySelector("form");
+const inputPreis = document.querySelector('input[name="preis"]');
+
+let isEditing = false;
+let currentEditId = null;
 
 document.addEventListener("DOMContentLoaded", () => {
   renderProducts();
 });
 
-const inputPreis = document.querySelector('input[name="preis"]');
 inputPreis.addEventListener("input", (e) => {
   const inputPriceValue = e.target.value;
   let msgElem = e.target.nextElementSibling;
@@ -15,16 +18,15 @@ inputPreis.addEventListener("input", (e) => {
   if (msgElem) {
     msgElem.remove();
   }
-
   if (isNaN(inputPriceValue) || inputPriceValue < 1) {
     msgElem = document.createElement("p");
     msgElem.classList.add("msg");
     msgElem.textContent = "Preis muss größer als 1 sein!";
-    msgElem.style.color = "red";
+    msgElem.style.color = "red"; 
     msgElem.style.fontSize = "0.9rem";
     msgElem.style.padding = "0.4rem 0";
 
-    e.target.parentElement.appendChild(msgElem);
+    e.target.parentElement.appendChild(msgElem); 
   } else if (inputPriceValue === "") {
     msgElem = document.createElement("p");
     msgElem.classList.add("msg");
@@ -34,6 +36,8 @@ inputPreis.addEventListener("input", (e) => {
 });
 
 addBtn.addEventListener("click", () => {
+  isEditing = false;
+  formElem.reset();
   dialogElem.showModal();
 });
 
@@ -41,41 +45,55 @@ closeBtn.addEventListener("click", () => {
   dialogElem.close();
 });
 
-window.addEventListener("click", (event) => {
-  if (event.target === dialogElem) {
-    dialogElem.close();
-  }
-});
+// window.addEventListener('click', (event) => {
+//     if (event.target === dialogElem) {
+//         dialogElem.close()
+//     }
+// });
 
-formElem.addEventListener("submit", (event) => {
-  event.preventDefault();
+formElem.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-  const { name, menge, preis } = event.target.elements;
+  const { name, menge, preis } = e.target.elements;
 
   const nameValue = name.value.trim();
   const formattedName =
     nameValue.charAt(0).toUpperCase() + nameValue.slice(1).toLowerCase();
+  const mengeValue = parseFloat(menge.value.trim());
+  const preisValue = parseFloat(preis.value.trim());
 
-  const mengeValue = menge.value.trim();
-  const preisValue = preis.value.trim();
+  const exitingData = getDataFromLocaleStorage();
 
-  const exitingdata = getDataFromLocaleStorage();
+  if (isEditing && currentEditId !== null) {
+    const updatedEditedData = exitingData.map((product) => {
+      return product.id === currentEditId
+        ? {
+            ...product,
+            name: formattedName,
+            menge: mengeValue,
+            preis: preisValue,
+          }
+        : product;
+    });
 
-  const newData = {
-    name: formattedName,
-    menge: mengeValue,
-    preis: preisValue,
-    id:new Date().getTime()
-  };
+    saveToLocaleStorage(updatedEditedData);
+  } else {
+    const newData = {
+      name: formattedName,
+      menge: mengeValue,
+      preis: preisValue,
+      id: new Date().getTime(),
+    };
 
-  const updatedData = [...exitingdata, newData];
+    const updatedDate = [...exitingData, newData];
+    saveToLocaleStorage(updatedDate);
+  }
 
-  saveToLocaleStorage(updatedData);
-
-  name.value = "";
-  menge.value = "";
-  preis.value = "";
-
+  formElem.reset();
+  // name.value = '';
+  // menge.value = '';
+  // preis.value = '';
+  dialogElem.close();
   renderProducts();
 });
 
@@ -90,21 +108,44 @@ const getDataFromLocaleStorage = () => {
 
 const renderProducts = () => {
   const products = getDataFromLocaleStorage();
+  console.log(products);
 
   const rootElem = document.querySelector(".root");
 
   rootElem.innerHTML = `
-  <ul class="lists_container">
-  ${products.map(product => `
-    <li class="list_card">
-    <p><strong>${product.name} ${product.menge}</strong></p>
-    <div class = "btn_container">
-    <span><i class="fa-regular fa-pen-to-square"></i></span>
-    <span><i class="fa-regular fa-trash-can"></i></span>
+<ul class='lists_container'>
+${products
+  .map(
+    (product) => `
+    <li class='list_card'>
+    <p><strong>${product.menge} ${product.name}</strong></p>
+    <div class="btn_container">
+    <span onclick="editProduct(${product.id})"><i class="fa-regular fa-pen-to-square"></i></span>
+    <span onclick="deleteProduct(${product.id})"><i class="fa-regular fa-trash-can"></i></span>
     </div>
     </li>
-    `).join("")}
-    </ul>
-`
-}
+    `
+  )
+  .join("")}
+</ul>
+`;
+};
+
+const editProduct = (id) => {
+  const products = getDataFromLocaleStorage();
+  const productToEdit = products.find((product) => product.id === id);
+
+  if (productToEdit) {
+    isEditing = true;
+    currentEditId = id;
+
+    const { name, menge, preis } = formElem.elements;
+
+    name.value = productToEdit.name;
+    menge.value = productToEdit.menge;
+    preis.value = productToEdit.preis;
+
+    dialogElem.showModal();
+  }
+};
 
