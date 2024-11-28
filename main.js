@@ -3,6 +3,8 @@ const addBtn = document.querySelector(".add_list_btn");
 const closeBtn = document.querySelector(".close_dialog");
 const formElem = document.querySelector("form");
 const inputPreis = document.querySelector('input[name="preis"]');
+const h4Elem = document.createElement("h4");
+dialogElem.insertBefore(h4Elem, dialogElem.firstChild);
 
 let isEditing = false;
 let currentEditId = null;
@@ -39,6 +41,9 @@ addBtn.addEventListener("click", () => {
   isEditing = false;
   formElem.reset();
   dialogElem.showModal();
+
+
+  h4Elem.textContent = "Produkt hinzufügen";
 });
 
 closeBtn.addEventListener("click", () => {
@@ -132,8 +137,13 @@ ${products
 };
 
 const editProduct = (id) => {
+  h4Elem.textContent = "Product bearteiten";
+
   const products = getDataFromLocaleStorage();
+
   const productToEdit = products.find((product) => product.id === id);
+
+
 
   if (productToEdit) {
     isEditing = true;
