@@ -149,3 +149,11 @@ const editProduct = (id) => {
   }
 };
 
+const deleteProduct = (id) => {
+  const products = getDataFromLocaleStorage();
+  const filteredData = products.filter((product) => product.id !== id);
+
+  saveToLocaleStorage(filteredData);
+  renderProducts();
+};
+
