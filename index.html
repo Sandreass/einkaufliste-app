@@ -12,8 +12,7 @@
     />
     <link rel="stylesheet" href="style.css" />
     <script src="main.js" defer></script>
-
-    <title>Document</title>
+    <title>Einkaufliste</title>
   </head>
 
   <body>
@@ -22,13 +21,29 @@
     </header>
     <main>
       <div class="root">
-        
+        <section class="filter_container">
+          <span class="sort_menge">
+            Menge
+            
+            <i class="fa-solid fa-sort-down"></i>
+          </span>
+          <span class="sort_preis">
+            Preis
+            <i class="fa-solid fa-sort-down"></i>
+          </span>
+
+          <span class="sort_name">
+            Name
+            <i class="fa-solid fa-sort-down"></i>
+          </span>
+        </section>
+        <div id="product-list"></div>
       </div>
       <button class="add_list_btn">+</button>
 
       <dialog class="dialog_elem">
         <span class="close_dialog"><i class="fa-solid fa-xmark"></i></span>
-    
+
         <form>
           <div class="form_group">
             <label for="name"></label>

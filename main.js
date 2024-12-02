@@ -4,10 +4,14 @@ const closeBtn = document.querySelector(".close_dialog");
 const formElem = document.querySelector("form");
 const inputPreis = document.querySelector('input[name="preis"]');
 const h4Elem = document.createElement("h4");
+const sortMengeButton = document.querySelector(".sort_menge");
+const productListElem = document.getElementById("product-list");
+
 dialogElem.insertBefore(h4Elem, dialogElem.firstChild);
 
 let isEditing = false;
 let currentEditId = null;
+let isMengeAsc = true; 
 
 document.addEventListener("DOMContentLoaded", () => {
   renderProducts();
@@ -24,11 +28,11 @@ inputPreis.addEventListener("input", (e) => {
     msgElem = document.createElement("p");
     msgElem.classList.add("msg");
     msgElem.textContent = "Preis muss größer als 1 sein!";
-    msgElem.style.color = "red"; 
+    msgElem.style.color = "red";
     msgElem.style.fontSize = "0.9rem";
     msgElem.style.padding = "0.4rem 0";
 
-    e.target.parentElement.appendChild(msgElem); 
+    e.target.parentElement.appendChild(msgElem);
   } else if (inputPriceValue === "") {
     msgElem = document.createElement("p");
     msgElem.classList.add("msg");
@@ -42,19 +46,12 @@ addBtn.addEventListener("click", () => {
   formElem.reset();
   dialogElem.showModal();
 
-
   h4Elem.textContent = "Produkt hinzufügen";
 });
 
 closeBtn.addEventListener("click", () => {
   dialogElem.close();
 });
-
-// window.addEventListener('click', (event) => {
-//     if (event.target === dialogElem) {
-//         dialogElem.close()
-//     }
-// });
 
 formElem.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -67,10 +64,10 @@ formElem.addEventListener("submit", (e) => {
   const mengeValue = parseFloat(menge.value.trim());
   const preisValue = parseFloat(preis.value.trim());
 
-  const exitingData = getDataFromLocaleStorage();
+  const existingData = getDataFromLocaleStorage();
 
   if (isEditing && currentEditId !== null) {
-    const updatedEditedData = exitingData.map((product) => {
+    const updatedEditedData = existingData.map((product) => {
       return product.id === currentEditId
         ? {
             ...product,
@@ -90,14 +87,11 @@ formElem.addEventListener("submit", (e) => {
       id: new Date().getTime(),
     };
 
-    const updatedDate = [...exitingData, newData];
-    saveToLocaleStorage(updatedDate);
+    const updatedData = [...existingData, newData];
+    saveToLocaleStorage(updatedData);
   }
 
   formElem.reset();
-  // name.value = '';
-  // menge.value = '';
-  // preis.value = '';
   dialogElem.close();
   renderProducts();
 });
@@ -113,37 +107,31 @@ const getDataFromLocaleStorage = () => {
 
 const renderProducts = () => {
   const products = getDataFromLocaleStorage();
-  console.log(products);
-
-  const rootElem = document.querySelector(".root");
-
-  rootElem.innerHTML = `
-<ul class='lists_container'>
-${products
-  .map(
-    (product) => `
-    <li class='list_card'>
-    <p><strong>${product.menge} ${product.name}</strong></p>
-    <div class="btn_container">
-    <span onclick="editProduct(${product.id})"><i class="fa-regular fa-pen-to-square"></i></span>
-    <span onclick="deleteProduct(${product.id})"><i class="fa-regular fa-trash-can"></i></span>
-    </div>
-    </li>
-    `
-  )
-  .join("")}
-</ul>
-`;
+  productListElem.innerHTML = `
+    <ul class='lists_container'>
+      ${products
+        .map(
+          (product) => `
+        <li class='list_card'>
+          <p><strong>${product.menge} ${product.name}</strong></p>
+          <div class="btn_container">
+            <span onclick="editProduct(${product.id})"><i class="fa-regular fa-pen-to-square"></i></span>
+            <span onclick="deleteProduct(${product.id})"><i class="fa-regular fa-trash-can"></i></span>
+          </div>
+        </li>
+      `
+        )
+        .join("")}
+    </ul>
+  `;
 };
 
 const editProduct = (id) => {
-  h4Elem.textContent = "Product bearteiten";
+  h4Elem.textContent = "Product bearbeiten";
 
   const products = getDataFromLocaleStorage();
 
   const productToEdit = products.find((product) => product.id === id);
-
-
 
   if (productToEdit) {
     isEditing = true;
@@ -167,3 +155,13 @@ const deleteProduct = (id) => {
   renderProducts();
 };
 
+
+sortMengeButton.addEventListener("click", () => {
+  const products = getDataFromLocaleStorage();
+
+  products.sort((a, b) => (isMengeAsc ? a.menge - b.menge : b.menge - a.menge));
+  isMengeAsc = !isMengeAsc;
+
+  saveToLocaleStorage(products);
+  renderProducts();
+});
