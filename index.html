@@ -20,22 +20,25 @@
     <main>
 
         <section class="filter_container">
-            <span class="sort_menge">
+            <span class="sort_menge" data-sortKey="menge">
                 Menge
                 <i class="fa-solid fa-sort-down sort_asc"></i>
                 <i class="fa-solid fa-sort-up sort_desc"></i>
             </span>
-
-            <span class="sort_preis">
+        
+            <span class="sort_preis" data-sortKey="preis">
                 Preis
-                <i class="fa-solid fa-sort-down"></i>
+                <i class="fa-solid fa-sort-down sort_asc"></i>
+                <i class="fa-solid fa-sort-up sort_desc"></i>
             </span>
-
-            <span class="sort_name">
+        
+            <span class="sort_name" data-sortKey="name">
                 Name
-                <i class="fa-solid fa-sort-down"></i>
+                <i class="fa-solid fa-sort-down sort_asc"></i>
+                <i class="fa-solid fa-sort-up sort_desc"></i>
             </span>
         </section>
+        
 
         <button class="add_list_btn">+</button>
         <dialog class="dialog_elem">
