@@ -105,6 +105,8 @@ main dialog {
   border-radius: 12px;
   background: rgb(253, 252, 252);
   border: none;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+
 }
 
 dialog::backdrop{
@@ -133,6 +135,7 @@ form button {
   padding: 0.4rem 0.8rem;
   outline: none;
 }
+
 .form_group input:invalid,
 .form_group input:focus
 {
@@ -151,7 +154,7 @@ form button {
   margin-top: 0.3rem;
 }
 
-form button:hover {
+.form_group button:hover {
   background-color: rgba(80, 141, 212, 0.825);
 }
 
@@ -181,3 +184,14 @@ font-size: 21px;
 .no-spinner[type="number"] {
   -moz-appearance: textfield;
 }
+
+
+.filter_container{
+  width: 100%;
+  padding: 0 1.5rem 2rem 1.5rem;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 2rem;
+}
+
