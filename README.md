@@ -1,5 +1,35 @@
-einkaufslist-app/
-├── index.html         # Main HTML file
-├── style.css          # Application styling
-├── main.js            # JavaScript for app functionality
-├── README.md          # Project documentation
+# Einkaufslist-App
+
+Welcome to the **Einkaufslist-App**, a modern, lightweight, and user-friendly application designed to manage your shopping list effectively. You can easily add, edit, delete, and sort your shopping items.
+
+
+---
+
+## 🚀 Features
+
+### 1. Add Items
+- Add new products with details like **Name**, **Quantity**, and **Price**.
+- Intuitive form validation ensures correct input for each field.
+
+### 2. Edit Items
+- Update existing product details with ease.
+
+### 3. Delete Items
+- Remove items from the list with a single click.
+
+### 4. Sort Items
+- Sort products by **Name**, **Quantity**, or **Price**.
+- Toggle sorting direction (ascending/descending) for better data visualization.
+
+---
+
+
+## 📦 Technologies Used
+
+- **HTML5**: For structured and semantic content.
+- **CSS3**: To style the app and ensure responsive design.
+- **JavaScript**: Implements app functionality and interactivity.
+- **LocalStorage**: To persist shopping list data across sessions.
+
+---
+
