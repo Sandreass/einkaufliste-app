@@ -1,7 +1,8 @@
 # Einkaufslist-App
 
-Welcome to the **Einkaufslist-App**, a modern, lightweight, and user-friendly application designed to manage your shopping list effectively. You can easily add, edit, delete, and sort your shopping items.
+Welcome to the **Einkaufslist-App**, a modern, lightweight, and user-friendly application designed to manage your shopping list effectively. With its sleek interface and robust features, you can easily add, edit, delete, and sort your shopping items.
 
+![App Screenshot](./screenshot1.png)
 
 ---
 
@@ -23,6 +24,18 @@ Welcome to the **Einkaufslist-App**, a modern, lightweight, and user-friendly ap
 
 ---
 
+## 🖼️ Screenshots
+
+### Main Interface
+![Main Interface Screenshot](./screenshot2.png)
+
+### Add New Item Dialog
+![Add Item Dialog Screenshot](./screenshot3.png)
+
+### Sorted Items View
+![Sorted Items View Screenshot](./screenshot4.png)
+
+---
 
 ## 📦 Technologies Used
 
@@ -33,3 +46,8 @@ Welcome to the **Einkaufslist-App**, a modern, lightweight, and user-friendly ap
 
 ---
 
+## 🛠️ Installation and Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/einkaufslist-app.git
