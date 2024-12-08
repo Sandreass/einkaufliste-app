@@ -1,6 +1,6 @@
 # Einkaufslist-App
 
-Welcome to the **Einkaufslist-App**, a modern, lightweight, and user-friendly application designed to manage your shopping list effectively. With its sleek interface and robust features, you can easily add, edit, delete, and sort your shopping items.
+Welcome to the **Einkaufslist-App**, a modern, lightweight, and user-friendly application designed to manage your shopping list effectively. You can easily add, edit, delete, and sort your shopping items.
 
 ![App Screenshot](./screenshot1.png)
 
@@ -50,4 +50,4 @@ Welcome to the **Einkaufslist-App**, a modern, lightweight, and user-friendly ap
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/einkaufslist-app.git
+   git clone git@github.com:Sandreass/einkaufliste-app.git
