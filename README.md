@@ -2,7 +2,7 @@
 
 Welcome to the **Einkaufslist-App**, a modern, lightweight, and user-friendly application designed to manage your shopping list effectively. You can easily add, edit, delete, and sort your shopping items.
 
-![App Screenshot](./screenshot1.png)
+![App Screenshot](./screenshots/screenshot1.png)
 
 ---
 
@@ -27,13 +27,13 @@ Welcome to the **Einkaufslist-App**, a modern, lightweight, and user-friendly ap
 ## 🖼️ Screenshots
 
 ### Main Interface
-![Main Interface Screenshot](./screenshot2.png)
+![Main Interface Screenshot](./screenshots/screenshot2.png)
 
 ### Add New Item Dialog
-![Add Item Dialog Screenshot](./screenshot3.png)
+![Add Item Dialog Screenshot](./screenshots/screenshot3.png)
 
 ### Sorted Items View
-![Sorted Items View Screenshot](./screenshot4.png)
+![Sorted Items View Screenshot](./screenshots/screenshot4.png) 
 
 ---
 
